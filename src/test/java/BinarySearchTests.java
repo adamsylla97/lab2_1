@@ -86,4 +86,16 @@ public class BinarySearchTests {
 
     }
 
+    @Test
+    public void searchingForElementInSeqWithZeroLength(){
+
+        int[] seq = {};
+        final int KEY = 5;
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(KEY, seq));
+
+    }
+
+
+
 }
