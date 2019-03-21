@@ -10,15 +10,25 @@ public class BinarySearchTests {
 
         int[] seq = {8};
         final int KEY = 8;
+        final int EXPECTED_VALUE = 0;
 
         SearchResult result = BinarySearch.search(KEY,seq);
 
         Assertions.assertEquals(true,result.isFound());
-        Assertions.assertEquals(0,result.getPosition());
+        Assertions.assertEquals(EXPECTED_VALUE,result.getPosition());
     }
 
     @Test
     public void elementIsNotInSequenceLengthEqualsOne(){
+
+        int[] seq = {3};
+        final int KEY = 4;
+        final int EXPECTED_VALUE = -1;
+
+        SearchResult result = BinarySearch.search(KEY,seq);
+
+        Assertions.assertEquals(false,result.isFound());
+        Assertions.assertEquals(EXPECTED_VALUE,result.getPosition());
 
     }
 
