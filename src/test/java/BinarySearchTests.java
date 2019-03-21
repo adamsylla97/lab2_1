@@ -35,6 +35,15 @@ public class BinarySearchTests {
     @Test
     public void elementIsFirstElementOfSeq(){
 
+        int[] seq = {1,2,3,4};
+        final int KEY = 1;
+        final int EXPECTED_VALUE = 0;
+
+        SearchResult result = BinarySearch.search(KEY,seq);
+
+        Assertions.assertEquals(true,result.isFound());
+        Assertions.assertEquals(EXPECTED_VALUE,result.getPosition());
+
     }
 
     @Test
