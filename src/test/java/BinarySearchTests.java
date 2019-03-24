@@ -1,7 +1,10 @@
 import edu.iis.mto.bsearch.BinarySearch;
 import edu.iis.mto.bsearch.SearchResult;
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.security.Key;
 
 public class BinarySearchTests {
 
@@ -16,6 +19,7 @@ public class BinarySearchTests {
 
         Assertions.assertEquals(true, result.isFound());
         Assertions.assertEquals(EXPECTED_VALUE, result.getPosition());
+
     }
 
     @Test
@@ -71,7 +75,6 @@ public class BinarySearchTests {
 
         Assertions.assertTrue(result.isFound());
         Assertions.assertEquals(EXPECTED_VALUE, result.getPosition());
-
     }
 
     @Test
@@ -87,7 +90,7 @@ public class BinarySearchTests {
     }
 
     @Test
-    public void searchingForElementInSeqWithZeroLength(){
+    public void searchingForElementInSeqWithZeroLength() {
 
         int[] seq = {};
         final int KEY = 5;
@@ -96,6 +99,29 @@ public class BinarySearchTests {
 
     }
 
+    @Test
+    public void searchForElementWhenTheyAreTwoTheSameElementsInSequence(){
 
+        int[] seq = {-3,-1,0,1,4,4,7};
+        final int KEY = 4;
+
+        SearchResult result = BinarySearch.search(KEY,seq);
+
+        Assertions.assertTrue(result.isFound());
+
+    }
+
+    @Test
+    public void searchForElementInTheMiddleWhenThereAreManyOfThemInSequence(){
+
+        int[] seq = {-1,3,3,3,3,3,9};
+        final int KEY = 3;
+        final int EXPECTED_VALUE = (seq.length-1)/2;
+
+        SearchResult result = BinarySearch.search(KEY,seq);
+
+        Assertions.assertEquals(EXPECTED_VALUE,result.getPosition());
+
+    }
 
 }
